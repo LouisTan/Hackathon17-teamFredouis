@@ -45,17 +45,25 @@
             <li>
                 <a href="#">Shortcuts</a>
             </li>
-             <li>
-                  <table idclass="table table-striped">
-            <thead><tr><th>Name</th><th>Long</th><th>Lat</th></tr></thead>
-                <tbody id = "Landmarks">
-                <tr><td>gsx$nom</td><td>gsx$long</td><td>.gsx$lat</td></tr>
-                    
-                </tbody>
-        </table>
+            <li>
+              	<table idclass="table table-striped">
+		            <thead>
+		            	<tr>
+		            		<th>Name</th>
+		            		<th>Long</th>
+		            		<th>Lat</th>
+		            	</tr>
+	            	</thead>
+	            	<tbody id = "Landmarks">
+		                <tr>
+		                	<td>gsx$nom</td>
+		                	<td>gsx$long</td>
+		                	<td>gsx$lat</td>
+		                </tr>
+	                </tbody>
+        		</table>
             </li>
         </ul>
-
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -63,9 +71,12 @@
     <div id="map"></div>
     <!-- /#map -->
 
-      <script id="LandmarkTemplate" type="text/template">
-     <td>"<%= gsx$nom %>"</td><td>"<%= gsx$long %>"</td><td>"<%= gsx$lat %>"</td>
+    <script id="LandmarkTemplate" type="text/template">
+	    <td>"<%= gsx$nom %>"</td>
+	    <td>"<%= gsx$long %>"</td>
+	    <td>"<%= gsx$lat %>"</td>
     </script>
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -74,7 +85,7 @@
     
 
     <script src="js/underscore-min.js"></script>
-    <script src="js/backbone-min.js"></script>
+    <script src="js/backbone.js"></script>
     <script src="js/home-scripts.js"></script>
     
     <!-- Google Map Script -->

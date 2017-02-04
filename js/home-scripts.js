@@ -12,7 +12,7 @@ function initMap() {
         defaults: {
             gsx$nom: "No title",
             gsx$long: "No long",
-            gsx$LAT: "No lat",
+            gsx$lat: "No lat",
         },
     });
 
