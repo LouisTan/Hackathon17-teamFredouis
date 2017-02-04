@@ -47,19 +47,7 @@
             </li>
             <li>
               	<table idclass="table table-striped">
-		            <thead>
-		            	<tr>
-		            		<th>Name</th>
-		            		<th>Long</th>
-		            		<th>Lat</th>
-		            	</tr>
-	            	</thead>
 	            	<tbody id = "Landmarks">
-		                <tr>
-		                	<td>gsx$nom</td>
-		                	<td>gsx$long</td>
-		                	<td>gsx$lat</td>
-		                </tr>
 	                </tbody>
         		</table>
             </li>
@@ -72,9 +60,9 @@
     <!-- /#map -->
 
     <script id="LandmarkTemplate" type="text/template">
-	    <td>"<%= gsx$nom %>"</td>
-	    <td>"<%= gsx$long %>"</td>
-	    <td>"<%= gsx$lat %>"</td>
+	    <td><button><%= gsx$nom %></button></td>
+	    <td class = "lat" hidden><%= gsx$long %></td>
+	    <td class = "long" hidden><%= gsx$lat %></td>
     </script>
 
     <!-- jQuery -->
