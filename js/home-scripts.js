@@ -8,7 +8,7 @@ function initMap() {
 
 (function ($) {
 
-    var Landscape = Backbone.Model.extend({
+    var Landmark = Backbone.Model.extend({
         defaults: {
             gsx$nom: "No title",
             gsx$long: "No long",
@@ -17,7 +17,7 @@ function initMap() {
     });
 
     var Library = Backbone.Collection.extend({
-        model: Landscape,
+        model: Landmark,
         url: function () {
             var key = "1ti6294CKpRH0-RYrLcdtP_ZF1CCAleuo5wS7MeMF22k";
             return "https://spreadsheets.google.com/feeds/list/" + key + "/od6/public/values?alt=json";
@@ -36,8 +36,8 @@ function initMap() {
 
     var BookView = Backbone.View.extend({
         tagName: "tr",
-        className: "LandscapeContainer",
-        template: $("#LandscapeTemplate").html(),
+        className: "LandmarkContainer",
+        template: $("#LandmarkTemplate").html(),
         render: function () {
             var tmpl = _.template(this.template);
             this.$el.html(tmpl(this.model.toJSON()));
@@ -45,7 +45,7 @@ function initMap() {
         },
     });
     var LibraryView = Backbone.View.extend({
-        el: $("#Landscapes"),
+        el: $("#Landmarks"),
 
         initialize: function () {
             this.collection = new Library();
@@ -62,11 +62,11 @@ function initMap() {
         render: function () {
             var that = this;
             _.each(this.collection.models, function (item) {
-                that.renderLandscape(item);
+                that.renderLandmark(item);
             });
         },
 
-        renderLandscape: function (item) {
+        renderLandmark: function (item) {
             var bookView = new BookView({
                 model: item
             });

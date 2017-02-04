@@ -48,7 +48,7 @@
              <li>
                   <table idclass="table table-striped">
             <thead><tr><th>Name</th><th>Long</th><th>Lat</th></tr></thead>
-                <tbody id = "Landscapes">
+                <tbody id = "Landmarks">
                 <tr><td>gsx$nom</td><td>gsx$long</td><td>.gsx$lat</td></tr>
                     
                 </tbody>
@@ -63,20 +63,20 @@
     <div id="map"></div>
     <!-- /#map -->
 
-      <script id="LandscapeTemplate" type="text/template">
-     <td>gsx$nom</td><td>gsx$long</td><td>.gsx$lat</td>
+      <script id="LandmarkTemplate" type="text/template">
+     <td>"<%= gsx$nom %>"</td><td>"<%= gsx$long %>"</td><td>"<%= gsx$lat %>"</td>
     </script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    
 
-    
-    
     <script src="js/underscore-min.js"></script>
     <script src="js/backbone-min.js"></script>
     <script src="js/home-scripts.js"></script>
+    
     <!-- Google Map Script -->
    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKoDW_LemteTW0xYl6Da9DjvNIDparQLQ&callback=initMap" async defer></script>
 
