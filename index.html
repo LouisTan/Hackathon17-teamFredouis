@@ -45,22 +45,17 @@
             <li>
                 <a href="#">Shortcuts</a>
             </li>
-            <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+             <li>
+                  <table idclass="table table-striped">
+            <thead><tr><th>Name</th><th>Long</th><th>Lat</th></tr></thead>
+                <tbody id = "Landscapes">
+                <tr><td>gsx$nom</td><td>gsx$long</td><td>.gsx$lat</td></tr>
+                    
+                </tbody>
+        </table>
             </li>
         </ul>
+
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -68,15 +63,21 @@
     <div id="map"></div>
     <!-- /#map -->
 
+      <script id="LandscapeTemplate" type="text/template">
+     <td>gsx$nom</td><td>gsx$long</td><td>.gsx$lat</td>
+    </script>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Google Map Script -->
+    
+    
+    <script src="js/underscore-min.js"></script>
+    <script src="js/backbone-min.js"></script>
     <script src="js/home-scripts.js"></script>
-
+    <!-- Google Map Script -->
    	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCKoDW_LemteTW0xYl6Da9DjvNIDparQLQ&callback=initMap" async defer></script>
 
 </body>
