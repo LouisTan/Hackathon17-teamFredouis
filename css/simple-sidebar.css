@@ -51,6 +51,11 @@
     padding: 0;
     list-style: none;
 }
+button {
+  text-align:center;
+   width:230px;
+}
+
 
 .sidebar-nav li {
     text-indent: 20px;
@@ -79,6 +84,7 @@
     font-size: 18px;
     line-height: 60px;
 }
+
 
 .sidebar-nav > .sidebar-brand a {
     color: #999999;

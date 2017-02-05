@@ -2,7 +2,7 @@ var map;
 function initMap() {
 
   PinOnMap(45.5088400, -73.5878100)
-  $('#tabledata').DataTable();
+
   
 }
 function PinOnMap(lat, lng) {
@@ -82,6 +82,10 @@ function PinOnMap(lat, lng) {
             var lat = $(".lat:first",this).text();
             var lng = $(".long:first",this).text();
             PinOnMap(parseFloat(lat),parseFloat(lng));
+
+            });
+            $( "#tabledata").hover(function () {
+            $( "#tabledata").DataTable();
 
             });
         },
