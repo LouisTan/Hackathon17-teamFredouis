@@ -1,3 +1,5 @@
+var map;
+var panorama;
 
 function toggleStreetView() {
     var toggle = panorama.getVisible();
@@ -7,18 +9,17 @@ function toggleStreetView() {
         panorama.setVisible(false);
     }
 }
-
 function initMap() {
+    
+    PinOnMap(45.5088400, -73.5878100)
 
-  PinOnMap(45.5088400, -73.5878100)
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 45.5088400, lng: -73.5878100},
-    zoom: 6
-  });
-  var infoWindow = new google.maps.InfoWindow({map: map});
-
-  // Try HTML5 geolocation.
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 12
+    });
+      
+}
+// Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var pos = {
@@ -47,25 +48,25 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 
 function PinOnMap(lat, lng) {
     var myLatLng = new google.maps.LatLng(lat, lng);
-
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: myLatLng,
-        zoom: 12
-    });
-
+    
+    
+    
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         title: 'Montreal Map'
     });
-
+    
     panorama = map.getStreetView();
     panorama.setPosition(myLatLng);
     panorama.setPov(/** @type {google.maps.StreetViewPov} */({
         heading: 265,
         pitch: 0
-    }));  
+    }));
+    
+    
 }
+
 
 (function ($) {
     
@@ -149,3 +150,5 @@ function PinOnMap(lat, lng) {
     var libraryView = new LibraryView();
     
 })(jQuery)
+
+
