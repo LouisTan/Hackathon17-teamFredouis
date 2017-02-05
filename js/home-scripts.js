@@ -100,6 +100,7 @@ function PinOnMap(lat, lng) {
                                                $('.LandmarkContainer').click(function () {
                                                    var lat = $(".lat:first",this).text();
                                                    var lng = $(".long:first",this).text();
+                                                   $(".sidebar-brand").text( $("button:first",this).text());
                                                    PinOnMap(parseFloat(lat),parseFloat(lng));
                                                    
                                                });
