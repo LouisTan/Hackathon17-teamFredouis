@@ -1,27 +1,25 @@
 var map;
 function initMap() {
-  PinOnMap(10, -10)
+
+  PinOnMap(45.5088400, -73.5878100)
+  $('#tabledata').DataTable();
   
 }
 function PinOnMap(lat, lng) {
- var myLatLng = new google.maps.LatLng(lat, lng);
+    var myLatLng = new google.maps.LatLng(lat, lng);
 
-  var map = new google.maps.Map(document.getElementById('map'), {
-    center: myLatLng,
-    zoom: 16
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: myLatLng,
+        zoom: 12
     });
   
-   var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-
-
-
-  
+    var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Montreal Map'
+    });
+   
 }
-
 
 (function ($) {
 
@@ -97,6 +95,7 @@ function PinOnMap(lat, lng) {
     });
 
     var libraryView = new LibraryView();
-    
 
-})(jQuery);
+})(jQuery)
+
+

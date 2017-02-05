@@ -36,19 +36,25 @@
         <ul class="sidebar-nav">
             <li class="sidebar-brand">
                 <a href="#">
-                    Start Bootstrap
+                    Landmarks Montreal
                 </a>
             </li>
             <li>
-                <a href="#">Dashboard</a>
+                <a href="#">Browse Pictures</a>
             </li>
             <li>
-                <a href="#">Shortcuts</a>
+                <a href="#">Street View</a>
             </li>
             <li>
-              	<table idclass="table table-striped">
-	            	<tbody id = "Landmarks">
-	                </tbody>
+              	<table id="tabledata" idclass="table table-striped">
+	              	<thead>
+			            <tr>
+			                <th>Name</th>
+			                <th hidden>Latitude</th>
+			                <th hidden>Longitude</th>
+			            </tr>
+	        		</thead>
+	            	<tbody id="Landmarks"></tbody>
         		</table>
             </li>
         </ul>
@@ -70,6 +76,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.datatables.min.js"></script>
     
 
     <script src="js/underscore-min.js"></script>
