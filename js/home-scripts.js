@@ -1,10 +1,27 @@
 var map;
 function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: 0, lng: 0},
-    zoom: 16
-  });
+  PinOnMap(10, -10)
+  
 }
+function PinOnMap(lat, lng) {
+ var myLatLng = new google.maps.LatLng(lat, lng);
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatLng,
+    zoom: 16
+    });
+  
+   var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+
+
+
+  
+}
+
 
 (function ($) {
 
@@ -63,6 +80,12 @@ function initMap() {
             _.each(this.collection.models, function (item) {
                 that.renderLandmark(item);
             });
+            $('.LandmarkContainer').click(function () {
+            var lat = $(".lat:first",this).text();
+            var lng = $(".long:first",this).text();
+            PinOnMap(parseFloat(lat),parseFloat(lng));
+
+            });
         },
 
         renderLandmark: function (item) {
@@ -74,5 +97,6 @@ function initMap() {
     });
 
     var libraryView = new LibraryView();
+    
 
 })(jQuery);
