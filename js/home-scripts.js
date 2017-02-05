@@ -1,28 +1,47 @@
 var map;
+var panorama;
+
+function toggleStreetView() {
+    var toggle = panorama.getVisible();
+    if (toggle == false) {
+        panorama.setVisible(true);
+    } else {
+        panorama.setVisible(false);
+    }
+}
 function initMap() {
-
-  PinOnMap(45.5088400, -73.5878100)
-
-  
+    
+    PinOnMap(45.5088400, -73.5878100)
+    
+    
 }
 function PinOnMap(lat, lng) {
     var myLatLng = new google.maps.LatLng(lat, lng);
-
+    
     var map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         zoom: 12
     });
-  
+    
     var marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
         title: 'Montreal Map'
     });
-   
+    
+    panorama = map.getStreetView();
+    panorama.setPosition(myLatLng);
+    panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+        heading: 265,
+        pitch: 0
+    }));
+    
+    
 }
 
-(function ($) {
 
+(function ($) {
+    
     var Landmark = Backbone.Model.extend({
         defaults: {
             gsx$nom: "No title",
@@ -30,7 +49,7 @@ function PinOnMap(lat, lng) {
             gsx$lat: "No lat",
         },
     });
-
+    
     var Library = Backbone.Collection.extend({
         model: Landmark,
         url: function () {
@@ -48,58 +67,59 @@ function PinOnMap(lat, lng) {
             return data;
         }
     });
-
+    
     var BookView = Backbone.View.extend({
         tagName: "tr",
         className: "LandmarkContainer",
         template: $("#LandmarkTemplate").html(),
-        render: function () {
-            var tmpl = _.template(this.template);
-            this.$el.html(tmpl(this.model.toJSON()));
-            return this;
-        },
+                                        render: function () {
+                                            var tmpl = _.template(this.template);
+                                            this.$el.html(tmpl(this.model.toJSON()));
+                                            return this;
+                                        },
     });
     var LibraryView = Backbone.View.extend({
         el: $("#Landmarks"),
-
-        initialize: function () {
-            this.collection = new Library();
-            this.collection.fetch({
-                error: function () {
-                    console.log(arguments);
-                }
-            });
-            this.render();
-            this.collection.on("reset", this.render, this);
-        },
-
-        render: function () {
-            var that = this;
-            _.each(this.collection.models, function (item) {
-                that.renderLandmark(item);
-            });
-            $('.LandmarkContainer').click(function () {
-            var lat = $(".lat:first",this).text();
-            var lng = $(".long:first",this).text();
-            PinOnMap(parseFloat(lat),parseFloat(lng));
-
-            });
-            $( "#tabledata").hover(function () {
-            $( "#tabledata").DataTable();
-
-            });
-        },
-
-        renderLandmark: function (item) {
-            var bookView = new BookView({
-                model: item
-            });
-            this.$el.append(bookView.render().el);
-        }
+                                           
+                                           initialize: function () {
+                                               this.collection = new Library();
+                                               this.collection.fetch({
+                                                   error: function () {
+                                                       console.log(arguments);
+                                                   }
+                                               });
+                                               this.render();
+                                               this.collection.on("reset", this.render, this);
+                                           },
+                                           
+                                           render: function () {
+                                               var that = this;
+                                               _.each(this.collection.models, function (item) {
+                                                   that.renderLandmark(item);
+                                               });
+                                               $('.LandmarkContainer').click(function () {
+                                                   var lat = $(".lat:first",this).text();
+                                                   var lng = $(".long:first",this).text();
+                                                   PinOnMap(parseFloat(lat),parseFloat(lng));
+                                                   
+                                               });
+                                               $( "#tabledata").hover(function () {
+                                                   $( "#tabledata").DataTable();
+                                                   
+                                               });
+                                               
+                                           },
+                                           
+                                           renderLandmark: function (item) {
+                                               var bookView = new BookView({
+                                                   model: item
+                                               });
+                                               this.$el.append(bookView.render().el);
+                                           }
     });
-
+    
     var libraryView = new LibraryView();
-
+    
 })(jQuery)
 
 
